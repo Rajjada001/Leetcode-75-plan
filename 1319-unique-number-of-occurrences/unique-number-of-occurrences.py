@@ -7,9 +7,9 @@ class Solution:
             else:
                 hm[num] = 1
         res = set()
-        for key,val in hm.items():
-            if val in res:
-                return False
-            else:
-                res.add(val)
-        return True
+        for key in hm:
+            res.add(hm[key])
+        
+        if len(hm) == len(res):
+            return True
+        return False
