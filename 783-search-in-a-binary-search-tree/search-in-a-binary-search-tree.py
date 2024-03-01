@@ -5,10 +5,14 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
-        if root and val < root.val:
-            return self.searchBST(root.left, val)
-        elif root and val > root.val:
-            return self.searchBST(root.right, val)
-        else:
-            return root
+    def searchBST(self, root: Optional[TreeNode], target: int) -> Optional[TreeNode]:
+        # if not root:
+        #     return None
+        while root is not None:
+            if root.val == target:
+                return root
+            elif root.val < target:
+                root= root.right
+            else:
+                root = root.left
+        return None
