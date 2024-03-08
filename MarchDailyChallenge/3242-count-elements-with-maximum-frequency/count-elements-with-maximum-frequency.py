@@ -1,16 +1,16 @@
 class Solution:
     def maxFrequencyElements(self, nums: List[int]) -> int:
-        count = Counter(nums)
-        if max(count.values())==1:
-            return sum(count.values())
-        else:
-            max_count = 0
-            c = 0
-            for values in count.values():
-                if values> max_count:
-                    max_count = values
-            
-            for values in count.values():
-                if values == max_count:
-                    c += values
-            return c
+        freq = {}
+        max_freq = total_freq = 0
+
+        for num in nums:
+            freq[num] = freq.get(num, 0)+1
+            frequency = freq[num]
+
+            if frequency > max_freq:
+                max_freq = frequency
+                total_freq = frequency
+            elif frequency == max_freq:
+                total_freq += frequency
+        
+        return total_freq
